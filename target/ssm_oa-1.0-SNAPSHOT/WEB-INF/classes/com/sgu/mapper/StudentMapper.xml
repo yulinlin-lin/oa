@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sgu.mapper.StudentMapper">
+
+    <resultMap id="stuMap" type="com.sgu.domain.Student">
+        <id column="id" property="id"/>
+        <result column="no" property="no"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="cardno" property="cardno"/>
+        <result column="school" property="school"/>
+        <result column="education" property="education"/>
+        <result column="class_id" property="classId"/>
+        <result column="flag" property="flag"/>
+        <result column="email" property="email"/>
+        <result column="qq" property="qq"/>
+        <result column="phone" property="phone"/>
+        <result column="createdate" property="createdate"/>
+        <result column="photo" property="photo"/>
+        <result column="del" property="del"/>
+        <association property="c" javaType="com.sgu.domain.Class">
+            <result column="className" property="className"/>
+        </association>
+    </resultMap>
+
+    <select id="queryStudentByPageAndCondition" resultMap="stuMap">
+        select ts.*, tc.class_name as 'className'
+            from t_student ts
+         inner join t_class tc on ts.class_id = tc.id where del = 0
+         <if test="name != null and name != ''">
+             and name like CONCAT("%",#{name},"%")
+         </if>
+        <if test="classId != 0">
+            and class_id= #{classId}
+        </if>
+        order by id limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        select count(id) from t_student where del = 0
+        <if test="name != null and name != ''">
+            and name like CONCAT("%",#{name},"%")
+        </if>
+        <if test="classId != 0">
+            and class_id= #{classId}
+        </if>
+    </select>
+
+    <select id="dbExportToExcel" resultMap="stuMap">
+        select ts.*, tc.class_name as 'className'
+        from t_student ts
+        inner join t_class tc on ts.class_id = tc.id where del = 0
+        <if test="name != null and name != ''">
+            and name like CONCAT("%",#{name},"%")
+        </if>
+        <if test="classId != 0">
+            and class_id= #{classId}
+        </if>
+    </select>
+
+    <insert id="insertStudentsList">
+        insert into t_student values
+        <foreach collection="list" item="stu" separator=",">
+            (null,#{stu.no},#{stu.name},#{stu.sex},#{stu.birthday},
+            #{stu.cardno},#{stu.school},#{stu.education},#{stu.classId},#{stu.flag},
+            #{stu.email},#{stu.qq},#{stu.phone},#{stu.createdate},#{stu.photo},#{stu.del})
+        </foreach>
+    </insert>
+</mapper>
