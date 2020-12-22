@@ -45,7 +45,7 @@
 4.员工管理
 -
 员工管理里面可以对员工信息进行增册查改操作
-![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/login.PNG)
+![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/emp.PNG)
 
 
 5.专业管理
@@ -56,7 +56,7 @@
 6.班级管理
 -
 班级管理里面可以对班级信息进行增册查改操作
-![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/login.PNG)
+![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/class.PNG)
 
 7.学生管理
 -
