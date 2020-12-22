@@ -24,7 +24,7 @@
 1.登录
 -
 利用一个图片来验证是否是机器登录
-！[image](https://github.com/yulinlin-lin/oa/blob/main/projectImages/login.PNG)
+![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/login.PNG)
 
 
 
