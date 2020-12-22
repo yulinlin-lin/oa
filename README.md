@@ -72,4 +72,7 @@
 ![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/student_add.PNG)
 
 
+八. 可以点击头像修改
+=
+![](https://github.com/yulinlin-lin/oa/blob/main/projectImages/changeHead.PNG)
        
